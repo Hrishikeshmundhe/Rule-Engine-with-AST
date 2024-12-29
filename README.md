@@ -1,6 +1,6 @@
 Rule Engine with Abstract Syntax Tree (AST)
 
-This project is a Rule Engine application designed using Java and Spring Boot, leveraging an Abstract Syntax Tree (AST) to define, store, and evaluate rules. It includes functionalities for dynamic rule creation, storage in a database, evaluation against user-provided data, and robust error handling.
+   This project is a Rule Engine application designed using Java and Spring Boot, leveraging an Abstract Syntax Tree (AST) to define, store, and evaluate rules. It includes functionalities for dynamic rule creation, storage in a database, evaluation against user-provided data, and robust error handling.
 
 Features
 
@@ -29,90 +29,119 @@ Implementation Details
 
 2. Key Components
 
-ASTNode Class
-- Represents nodes in the AST, supporting both operands and operators.
-- Fields:
-  - type: Node type (e.g., operator or operand).
-  - value: Value of the node (e.g., age > 18).
-  - left and right: References to child nodes for operators.
-- Mapped to the ASTNODE table in the database.
+     ASTNode Class
 
-Rule Class
-- Represents a rule consisting of an AST structure.
-- Fields:
-  - name: Rule name.
-  - description: Optional description of the rule.
-  - root: Reference to the root ASTNode of the rule.
+    - Represents nodes in the AST, supporting both operands and operators.
+   - Fields:
+      - type: Node type (e.g., operator or operand).
+     
+      - value: Value of the node (e.g., age > 18).
+     
+      - left and right: References to child nodes for operators.
+          
+      - Mapped to the ASTNODE table in the database.
 
-RuleDTO Class
-- Data Transfer Object for transferring rule-related data between layers.
-- Includes fields for rule metadata and the ASTNode structure.
+    Rule Class
+ 
+     - Represents a rule consisting of an AST structure.
+    - Fields:
+      - name: Rule name.
+      - description: Optional description of the rule.
+      - root: Reference to the root ASTNode of the rule.
 
-RuleEngineService Class
-- Handles business logic for rule creation, evaluation, and validation.
-- Methods:
-  - createAndSaveRule(String ruleName, ASTNode astNode): Creates and persists a rule.
-  - evaluateRule(Long ruleId, Map<String, Object> testData): Evaluates a rule against provided test data.
+   RuleDTO Class
+     - Data Transfer Object for transferring rule-related data between layers.
+    
+     - Includes fields for rule metadata and the ASTNode structure.
 
-RuleEngineController
-- Exposes APIs for interacting with the rule engine.
-- Endpoints:
-  - POST /api/rules/create: Creates a new rule.
-  - POST /api/rules/evaluate/{ruleId}: Evaluates a rule.
-  - GET /api/rules/: Health check endpoint.
+   RuleEngineService Class
+   - Handles business logic for rule creation, evaluation, and validation.
 
-3. Database Configuration
-- Configured to use H2 in-memory database for development and testing.
-- Tables:
-  - RULE: Stores rule metadata.
-  - ASTNODE: Stores AST node information.
+   - Methods:
+      - createAndSaveRule(String ruleName, ASTNode astNode): Creates and persists a rule.
+      - evaluateRule(Long ruleId, Map<String, Object> testData): Evaluates a rule against provided test data.
 
-5. Error Handling
-- Ensures validation of user input.
-- Provides meaningful error messages for invalid or missing data.
+   RuleEngineController
+      - Exposes APIs for interacting with the rule engine.
+      - Endpoints:
+        - POST /api/rules/create: Creates a new rule.
+        - POST /api/rules/evaluate/{ruleId}: Evaluates a rule.
+        - GET /api/rules/: Health check endpoint.
 
-6. Testing
-- Tested using Postman to verify all endpoints.
-- Unit tests cover service-layer logic.
 
-How to Run the Application
+3)   Database Configuration
+      
+      - Configured to use H2 in-memory database for development and testing.
+     
+     - Tables:
+        - RULE: Stores rule metadata.
+        - ASTNODE: Stores AST node information.
 
-1. Clone the repository:
+4) Error Handling
 
-   git clone <repository_url>
+     - Ensures validation of user input.
+
+    - Provides meaningful error messages for invalid or missing data.
+
+ 5) Testing
+
+     - Tested using Postman to verify all endpoints.
+
+     - Unit tests cover service-layer logic.
+
+
+6) How to Run the Application
+
+   1. Clone the repository:
+
+          git clone <repository_url>
    
 
-2. Navigate to the project directory:
+   2. Navigate to the project directory:
   
-   cd rule-engine-ast
+          cd rule-engine-ast
 
 
-3. Build the project:
+   3. Build the project:
  
-   mvn clean install
+          mvn clean install
 
 
-4. Run the application:
+   4. Run the application:
   
-   mvn spring-boot:run
+          mvn spring-boot:run
   
 
-5. Access the API endpoints:
-   - Health Check: [http://localhost:8080/api/rules/](http://localhost:8080/api/rules/)
-   - Create Rule: POST http://localhost:8080/api/rules/create
-   - Evaluate Rule: POST http://localhost:8080/api/rules/evaluate/{ruleId}
+7)  Access the API endpoints:
+  
+     - Health Check: [http://localhost:8080/api/rules/](http://localhost:8080/api/rules/)
+ 
+     - Create Rule: POST http://localhost:8080/api/rules/create
+   
+     - Evaluate Rule: POST http://localhost:8080/api/rules/evaluate/{ruleId}
 
-Future Enhancements
-- Add user authentication for API access.
-- Improve error handling with detailed exception messages.
-- Implement a front-end UI for rule management.
-- Extend support for more complex rule types and nested logic.
 
-Contributing
-Contributions are welcome! Please fork the repository and submit a pull request.
+8) Future Enhancements
 
-License
-This project is licensed under the MIT License. See the LICENSE file for details.
+    - Add user authentication for API access.
 
-Contact: 
-For any questions or issues, please reach out to the project maintainers.
+    - Improve error handling with detailed exception messages.
+
+    - Implement a front-end UI for rule management.
+
+    - Extend support for more complex rule types and nested logic.
+
+
+9) Contributing
+
+     Contributions are welcome! Please fork the repository and submit a pull request.
+
+
+10) License
+
+      This project is licensed under the MIT License. See the LICENSE file for details.
+ 
+
+11) Contact: 
+
+     For any questions or issues, please reach out to the project maintainers.
